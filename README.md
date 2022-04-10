@@ -1,4 +1,4 @@
-# Find Comment
+# Configure IBM Cloud CLI
 
 A GitHub action to configure the IBM Cloud CLI and install plug-ins. It is usually used to integrate with your custom workflow or other IBM Cloud GitHub actions:
 
