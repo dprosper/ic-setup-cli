@@ -1,0 +1,57 @@
+# Copyright © 2022 Dimitri Prosper <dimitri_prosper@us.ibm.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Setup the IBM Cloud CLI
+author: IBM
+
+branding:
+  icon: 'terminal'  
+  color: 'blue'
+description: 'Setup CLI for IBM Cloud.'
+
+inputs:
+  API_KEY:
+    description: IBM Cloud API key
+    required: true
+  REGION:
+    description: IBM Cloud Region
+    required: false
+    default: us-east
+  RESOURCE_GROUP:
+    description: IBM Cloud resource group
+    required: false
+    default: default
+  INSTALL_PLUGINS: 
+    description: |- 
+      List of plugins to install and separated by a comma to get a full list of available 
+      Visit the Reference section on the https://cloud.ibm.com/docs/cli documentation page.
+    required: false
+
+outputs:
+  url:
+    description: 'url of newly deployed app'
+    value: ${{ steps.icce.outputs.url }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run shell script to deploy the ibmcloud cli
+      id: ic-cli
+      run: ${{ github.action_path }}/ic-setup.sh
+      shell: bash
+      env:
+        API_KEY: ${{ inputs.API_KEY }}
+        REGION: ${{ inputs.REGION }}
+        RESOURCE_GROUP: ${{ inputs.RESOURCE_GROUP }}
+        INSTALL_PLUGINS: ${{ inputs.INSTALL_PLUGINS }}
