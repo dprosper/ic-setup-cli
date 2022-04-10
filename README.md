@@ -8,7 +8,7 @@ A GitHub action to configure the IBM Cloud CLI and install plug-ins. It is usual
 
 ```yml
       - name: Configure IBM Cloud CLI
-        uses: dprosper/ic-setup-cli@v1
+        uses: dprosper/ic-setup-cli@v0.1.0
         with:
           API_KEY: ${{ secrets.API_KEY }}
           INSTALL_PLUGINS: code-engine,container-service
@@ -33,7 +33,7 @@ A GitHub action to configure the IBM Cloud CLI and install plug-ins. It is usual
 
 ## Versioning
 
-For this action you can lock the version to use by specifying it like this: `dprosper/ic-setup-cli@v1`. 
+For this action you can lock the version to use by specifying it like this: `dprosper/ic-setup-cli@v0.1.0`. 
 
 This action will always install the latest versions of the CLI and selected plug-ins. If you really need to, you can control the version of a plug-in used by specifing a specific version like this: `code-engine@v1.28.0`.
 
