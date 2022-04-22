@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Setup the IBM Cloud CLI
+name: Set up the IBM Cloud CLI
 author: IBM
 
 branding:
   icon: 'terminal'  
   color: 'blue'
-description: 'Setup CLI for IBM Cloud.'
+description: 'Set up CLI for IBM Cloud.'
 
 inputs:
   API_KEY:
