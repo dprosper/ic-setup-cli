@@ -38,8 +38,22 @@ for plugin in $plugins; do
 done
 
 set +o errexit
-ibmcloud login --apikey "$API_KEY" -r "$REGION" -g "$RESOURCE_GROUP"
-[ $? -ne 0 ] && echo "Error during login" && exit 1
+if [[ "$RESOURCE_GROUP" == "Default" ]]; then
+  ibmcloud login --apikey "$API_KEY" -r "$REGION" -g "$RESOURCE_GROUP"
+  if [ $? -ne 0 ]; then  
+      ibmcloud login --apikey "$API_KEY" -r "$REGION" -g default
+      [ $? -ne 0 ] && echo "Error during login" && exit 1
+  fi
+elif [[ "$RESOURCE_GROUP" == "default" ]]; then
+  ibmcloud login --apikey "$API_KEY" -r "$REGION" -g "$RESOURCE_GROUP"
+  if [ $? -ne 0 ]; then  
+      ibmcloud login --apikey "$API_KEY" -r "$REGION" -g Default
+      [ $? -ne 0 ] && echo "Error during login" && exit 1
+  fi
+else 
+  ibmcloud login --apikey "$API_KEY" -r "$REGION" -g "$RESOURCE_GROUP"
+  [ $? -ne 0 ] && echo "Error during login" && exit 1
+fi
 set -o errexit
 
 exit 0
