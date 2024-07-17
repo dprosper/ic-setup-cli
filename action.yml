@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Set up the IBM Cloud CLI
+name: Set up the IBM Cloud CLI (Deprecated)
 author: IBM
 
 branding:
