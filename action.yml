@@ -48,7 +48,8 @@ runs:
   steps:
     - name: Run shell script to deploy the ibmcloud cli
       id: ic-cli
-      run: ${{ github.action_path }}/ic-setup.sh
+      # run: ${{ github.action_path }}/ic-setup.sh
+      run:  echo "::warning::This GitHub action is deprecated and is no longer maintained. Please use https://github.com/marketplace/actions/ibm-cloud-cli instead"
       shell: bash
       env:
         API_KEY: ${{ inputs.API_KEY }}
